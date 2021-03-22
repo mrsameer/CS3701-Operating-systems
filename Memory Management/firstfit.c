@@ -53,10 +53,10 @@ int main(int argc, char const *argv[])
     }
     
     // print allocation table 
-    printf("Block no\t\tBlock size\t\t Process no\t\tFragmentation\n"); 
+    printf("Block no\t\tBlock size\t\t Process no\t\t Process size\t\tFragmentation\n"); 
     for (int i = 0; i < block_no; i++)
     {
-        printf("%d\t\t\t%d\t\t\t%d\t\t\t%d (%s)\n", i+1, blocks[i], allocation[i] == -1 ? -1: allocation[i] + 1, allocation[i] == -1? blocks[i]:blocks[i]-processes[i], allocation[i] == -1?"external":"internal");
+        printf("%d\t\t\t%d\t\t\t%d\t\t\t%d\t\t\t%d (%s)\n", i+1, blocks[i], allocation[i] == -1 ? -1: allocation[i] + 1, allocation[i] == -1 ? -1 : processes[allocation[i]],allocation[i] == -1? blocks[i]:(blocks[i]-processes[allocation[i]]), allocation[i] == -1?"external":"internal");
     }
     
     return 0;
