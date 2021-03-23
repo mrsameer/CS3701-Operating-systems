@@ -66,17 +66,20 @@ int main(int argc, char const *argv[])
     {
        if (i > 0)
        {
-           for (int j = i; j < n - 1; j++)
-           {
-               if (p[j].pat <= p[i-1].pct && p[j+1].pat <= p[i-1].pct && p[j].pbt > p[j+1].pbt)
+               for (int j = i; j < n; j++)
                {
-                   temp = p[j];
-                   p[j] = p[j + 1];
-                   p[j + 1] = temp;
+                   for (int k = i; k < n - 1; k++)
+                   {
+                       if (p[k].pat <= p[i - 1].pct && p[k + 1].pat <= p[i - 1].pct && p[k].pbt >= p[k + 1].pbt)
+                       {
+
+                           temp = p[k];
+                           p[k] = p[k + 1];
+                           p[k + 1] = temp;
+                       }
+                   }
                }
-               else
-                   break;
-           }
+               
        }
        
        if (p[i].pat - prev > 0)
