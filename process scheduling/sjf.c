@@ -66,7 +66,7 @@ int main(int argc, char const *argv[])
     {
        if (i > 0)
        {
-           for (int j = i + 1; j < n - 1; j++)
+           for (int j = i; j < n - 1; j++)
            {
                if (p[j].pat <= p[i].pct && p[j].pbt > p[j+1].pbt)
                {
