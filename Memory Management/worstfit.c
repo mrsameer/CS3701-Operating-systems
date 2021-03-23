@@ -37,7 +37,7 @@ int main(int argc, char const *argv[])
         scanf("%d", &processes[i]);
     }
 
-    // first fit allocation
+    // worst fit allocation
     int block;
     int currentblock_size;
     for (int i = 0; i < process_no; i++)
