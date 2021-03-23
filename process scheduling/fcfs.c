@@ -47,8 +47,11 @@ int main(int argc, char const *argv[])
         
     }
     
+    printf("Sequence of scheduling is: ");
     // find the completion time, turnaround time and waiting time of the processes
     int prev = p[0].pat;
+    int total_wt = 0; 
+    int total_tat = 0; 
     for (int i = 0; i < n; i++)
     {
         if (p[i].pat - prev > 0)
@@ -61,16 +64,21 @@ int main(int argc, char const *argv[])
         p[i].pct += prev + p[i].pbt; 
         p[i].ptat = p[i].pct - p[i].pat;
         p[i].pwt = p[i].ptat - p[i].pbt; 
-        prev = p[i].pct; 
+        prev = p[i].pct;
+
+        total_tat += p[i].ptat;
+        total_wt += p[i].pwt;
+        printf("P%d ", i+1);
     }
     
 
-    printf("PID\t\tAT\t\tBT\t\tCT\t\tTAT\t\tWT\n"); 
+    printf("\nPID\t\tAT\t\tBT\t\tCT\t\tTAT\t\tWT\n"); 
     for (int i = 0; i < n; i++)
     {
         printf("%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n", p[i].pno, p[i].pat, p[i].pbt, p[i].pct, p[i].ptat, p[i].pwt);   
     }
     
-    
+    printf("Average waiting time is: %.2f\n", (float)total_wt/n); 
+    printf("Total turnaround time is: %.2f\n", (float)total_tat/n);
     return 0;
 }
