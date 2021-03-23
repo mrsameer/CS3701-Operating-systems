@@ -61,14 +61,14 @@ int main(int argc, char const *argv[])
     // find the completion time, turnaround time and waiting time of the processes
     int total_wt = 0; 
     int total_tat = 0; 
-    int prev; 
+    int prev = p[0].pat; 
     for (int i = 0; i < n; i++)
     {
        if (i > 0)
        {
            for (int j = i; j < n - 1; j++)
            {
-               if (p[j].pat <= p[i].pct && p[j].pbt > p[j+1].pbt)
+               if (p[j].pat <= p[i-1].pct && p[j+1].pat <= p[i-1].pct && p[j].pbt > p[j+1].pbt)
                {
                    temp = p[j];
                    p[j] = p[j + 1];
