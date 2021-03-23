@@ -68,7 +68,7 @@ int main(int argc, char const *argv[])
 
         total_tat += p[i].ptat;
         total_wt += p[i].pwt;
-        printf("P%d ", i+1);
+        printf("P%d ", p[i].pno);
     }
     
 
